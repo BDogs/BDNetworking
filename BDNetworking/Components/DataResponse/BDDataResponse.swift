@@ -6,8 +6,8 @@
 //  Copyright © 2017年 品驰医疗. All rights reserved.
 //
 
-import UIKit
-
+//import UIKit
+import Foundation
 public class BDDataResponse<Value>: NSObject {
     ///
     public let request: URLRequest?

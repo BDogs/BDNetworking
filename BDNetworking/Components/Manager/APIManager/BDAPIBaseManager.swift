@@ -6,7 +6,7 @@
 //  Copyright © 2017年 品驰医疗. All rights reserved.
 //
 
-import UIKit
+//import UIKit
 import Foundation
 
 let kBDAPIBaseManagerRequestID = "kBDAPIBaseManagerRequestID"
@@ -53,7 +53,10 @@ open class BDAPIBaseManager: NSObject {
     public func cancelAllRequests() -> Void {
         BDAPIProxy.shareInstance.cancelRequests(requestIdList: requestList)
         requestList.removeAll()
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//        if #available(iOS 5.0, *) {
+//
+////            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//        }
     }
     
     public func cancelARequest(requestId: Int) -> Void {
@@ -62,7 +65,9 @@ open class BDAPIBaseManager: NSObject {
         }
         BDAPIProxy.shareInstance.cancelARequest(requestId: requestId)
         removeRequestIdFromList(requestId: requestId)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//        if #available(iOS 5.0, *) {
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//        }
     }
     
     /// 没有传入 reformer 或者 reformer 没有实现协议，那么获取到的就是没有处理过的数据
@@ -115,7 +120,7 @@ open class BDAPIBaseManager: NSObject {
             
             // 网络请求
             if BDNetworkingContext.sharedInstance.isReachable {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//                UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 self.isLoading = true
                 let httpMethod = self.child.requestType()
                 requestId = BDCallAPI(method: httpMethod, params: reformedParams)
@@ -254,7 +259,7 @@ open class BDAPIBaseManager: NSObject {
     // MARK: - private func
     private func BDCallAPI(method: BDAPIRequestType, params: [String : Any]? = nil) -> Int {
         let requestId = BDAPIProxy.shareInstance.callApi(serviceIdentifier: self.child.serviceType(), relativeUrl: self.child.relativeUrl(), params: params, method: method, encodingType: self.child.encodingType) { (response) in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            UIApplicatbbion.shared.isNetworkActivityIndicatorVisible = false
             if response.result.isSuccess {
                 self.successedOnCallingAPI(response: response)
             } else {

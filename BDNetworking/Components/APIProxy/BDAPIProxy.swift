@@ -6,7 +6,7 @@
 //  Copyright © 2017年 品驰医疗. All rights reserved.
 //
 
-import UIKit
+//import UIKit
 import Alamofire
 
 public enum BDAPIRequestType: String {
