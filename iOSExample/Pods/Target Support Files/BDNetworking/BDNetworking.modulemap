@@ -1,0 +1,6 @@
+framework module BDNetworking {
+  umbrella header "BDNetworking-umbrella.h"
+
+  export *
+  module * { export * }
+}

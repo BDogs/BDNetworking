@@ -6,9 +6,8 @@
 //  Copyright © 2017年 品驰医疗. All rights reserved.
 //
 
-
+//import UIKitb
 import Foundation
-
 class BDLoggerConfiguration: NSObject {
     /** 渠道ID */
     private(set) var channelID: String?

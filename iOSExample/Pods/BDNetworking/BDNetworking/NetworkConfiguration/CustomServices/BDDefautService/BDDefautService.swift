@@ -38,11 +38,13 @@ class BDDefautService: BDService, BDServiceProtocol {
     }
     
     var offlineApiBaseUrl: String {
-       return ""
+       return "http://192.168.1.205:9090/appserver"
+//        return "http://111.205.162.4:8081/WJYH"
     }
     
     var onlineApiBaseUrl: String {
-        return ""
+        return "http://pinsmedical.com:9090/appserver"
+//        return "http://111.205.162.4:8081/WJYH"
     }
     
     var offlineHeaderFields: [String : String] {

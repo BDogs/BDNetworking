@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '10'
+use_frameworks!
+ 
+target 'iOSExample' do
+pod 'BDNetworking'
+end
+    
+  
