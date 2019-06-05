@@ -1,5 +1,5 @@
 //
-//  Dictionary+Add.swift
+//  Array+Add.swift
 //  NetworkPlayground
 //
 //  Created by 诸葛游 on 2019/4/22.
@@ -8,15 +8,14 @@
 
 import Foundation
 
-extension Dictionary {
+extension Array {
     
-    
-    public func json() -> String? {
+    func json() -> String? {
         var paramJson: String?
         if let data = try? JSONSerialization.data(withJSONObject: self, options: []) {
             paramJson = String(data: data, encoding: .utf8) ?? ""
         }
         return paramJson
     }
-    
+
 }

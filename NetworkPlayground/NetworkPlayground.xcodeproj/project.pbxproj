@@ -12,16 +12,12 @@
 		F94988CE227554E600B97C30 /* APIManagerCreateOverlookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94988CD227554E600B97C30 /* APIManagerCreateOverlookViewController.swift */; };
 		F94988D0227585E600B97C30 /* DataReformerCreatingOverlookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94988CF227585E600B97C30 /* DataReformerCreatingOverlookViewController.swift */; };
 		F94988D222758C2100B97C30 /* PLFollowupTaskListDataReformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94988D122758C2000B97C30 /* PLFollowupTaskListDataReformer.swift */; };
-		F94988D422759FEA00B97C30 /* String+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94988D322759FEA00B97C30 /* String+Add.swift */; };
 		F94988D62275A2CF00B97C30 /* PLListAPIDataReformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94988D52275A2CF00B97C30 /* PLListAPIDataReformer.swift */; };
 		F94988D82275A50F00B97C30 /* PLInfoAPIDataReformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94988D72275A50F00B97C30 /* PLInfoAPIDataReformer.swift */; };
 		F94988DA2275A52300B97C30 /* PLInquiryGetDoctorListAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94988D92275A52300B97C30 /* PLInquiryGetDoctorListAPIManager.swift */; };
 		F9A83A712269B0370099683E /* PinsLifeTokenSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A83A702269B0370099683E /* PinsLifeTokenSettingViewController.swift */; };
 		F9A83A742269B3FC0099683E /* PLTokenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A83A732269B3FC0099683E /* PLTokenSetting.swift */; };
 		F9A83A77226D4AD70099683E /* LogDisplayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A83A75226D4AD70099683E /* LogDisplayingViewController.swift */; };
-		F9A83A7B226D8FA90099683E /* Dictionary+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A83A7A226D8FA90099683E /* Dictionary+Add.swift */; };
-		F9A83A7D226D925B0099683E /* Data+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A83A7C226D925B0099683E /* Data+Add.swift */; };
-		F9A83A7F226D93150099683E /* Array+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A83A7E226D93150099683E /* Array+Add.swift */; };
 		F9B285DD224CAE4D005D30C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B285DC224CAE4D005D30C7 /* AppDelegate.swift */; };
 		F9B285E1224CAE4F005D30C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9B285E0224CAE4F005D30C7 /* Assets.xcassets */; };
 		F9B285E4224CAE4F005D30C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B285E2224CAE4F005D30C7 /* Main.storyboard */; };
@@ -60,6 +56,10 @@
 		F9B286D3224E1CA8005D30C7 /* BDDefautService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B286D2224E1CA8005D30C7 /* BDDefautService.swift */; };
 		F9BD5C8C2275A8DF000268D3 /* PLUserInfoAPIDataReformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BD5C8B2275A8DF000268D3 /* PLUserInfoAPIDataReformer.swift */; };
 		F9BF4A4E228BFE0400324256 /* PLFDLoginAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF4A4D228BFE0300324256 /* PLFDLoginAPIManager.swift */; };
+		F9F18A4C22A7A7F700348FA7 /* Dictionary+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F18A4822A7A7F700348FA7 /* Dictionary+Add.swift */; };
+		F9F18A4D22A7A7F700348FA7 /* String+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F18A4922A7A7F700348FA7 /* String+Add.swift */; };
+		F9F18A4E22A7A7F700348FA7 /* Data+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F18A4A22A7A7F700348FA7 /* Data+Add.swift */; };
+		F9F18A4F22A7A7F700348FA7 /* Array+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F18A4B22A7A7F700348FA7 /* Array+Add.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,16 +87,12 @@
 		F94988CD227554E600B97C30 /* APIManagerCreateOverlookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerCreateOverlookViewController.swift; sourceTree = "<group>"; };
 		F94988CF227585E600B97C30 /* DataReformerCreatingOverlookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReformerCreatingOverlookViewController.swift; sourceTree = "<group>"; };
 		F94988D122758C2000B97C30 /* PLFollowupTaskListDataReformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLFollowupTaskListDataReformer.swift; sourceTree = "<group>"; };
-		F94988D322759FEA00B97C30 /* String+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Add.swift"; sourceTree = "<group>"; };
 		F94988D52275A2CF00B97C30 /* PLListAPIDataReformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLListAPIDataReformer.swift; sourceTree = "<group>"; };
 		F94988D72275A50F00B97C30 /* PLInfoAPIDataReformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLInfoAPIDataReformer.swift; sourceTree = "<group>"; };
 		F94988D92275A52300B97C30 /* PLInquiryGetDoctorListAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLInquiryGetDoctorListAPIManager.swift; sourceTree = "<group>"; };
 		F9A83A702269B0370099683E /* PinsLifeTokenSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinsLifeTokenSettingViewController.swift; sourceTree = "<group>"; };
 		F9A83A732269B3FC0099683E /* PLTokenSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLTokenSetting.swift; sourceTree = "<group>"; };
 		F9A83A75226D4AD70099683E /* LogDisplayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDisplayingViewController.swift; sourceTree = "<group>"; };
-		F9A83A7A226D8FA90099683E /* Dictionary+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Add.swift"; sourceTree = "<group>"; };
-		F9A83A7C226D925B0099683E /* Data+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Add.swift"; sourceTree = "<group>"; };
-		F9A83A7E226D93150099683E /* Array+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Add.swift"; sourceTree = "<group>"; };
 		F9B285D9224CAE4D005D30C7 /* NetworkPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B285DC224CAE4D005D30C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9B285E0224CAE4F005D30C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +138,10 @@
 		F9B286D2224E1CA8005D30C7 /* BDDefautService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BDDefautService.swift; sourceTree = "<group>"; };
 		F9BD5C8B2275A8DF000268D3 /* PLUserInfoAPIDataReformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLUserInfoAPIDataReformer.swift; sourceTree = "<group>"; };
 		F9BF4A4D228BFE0300324256 /* PLFDLoginAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLFDLoginAPIManager.swift; sourceTree = "<group>"; };
+		F9F18A4822A7A7F700348FA7 /* Dictionary+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Add.swift"; sourceTree = "<group>"; };
+		F9F18A4922A7A7F700348FA7 /* String+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Add.swift"; sourceTree = "<group>"; };
+		F9F18A4A22A7A7F700348FA7 /* Data+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Add.swift"; sourceTree = "<group>"; };
+		F9F18A4B22A7A7F700348FA7 /* Array+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Add.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,17 +203,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		F9A83A79226D8F830099683E /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				F9A83A7A226D8FA90099683E /* Dictionary+Add.swift */,
-				F9A83A7C226D925B0099683E /* Data+Add.swift */,
-				F9A83A7E226D93150099683E /* Array+Add.swift */,
-				F94988D322759FEA00B97C30 /* String+Add.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		F9B285D0224CAE4D005D30C7 = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +228,6 @@
 		F9B285DB224CAE4D005D30C7 /* NetworkPlayground */ = {
 			isa = PBXGroup;
 			children = (
-				F9A83A79226D8F830099683E /* Extension */,
 				F9B2869F224DBED0005D30C7 /* APPContext */,
 				F9B28685224CC64A005D30C7 /* NetworkCustomSetting */,
 				F9B28608224CAF84005D30C7 /* BDNetworking */,
@@ -275,6 +263,7 @@
 		F9B28608224CAF84005D30C7 /* BDNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				F9F18A4722A7A7F700348FA7 /* Extension */,
 				F9B28609224CAF84005D30C7 /* NetworkConfiguration */,
 				F9B28614224CAF84005D30C7 /* Components */,
 				F9B28630224CAF85005D30C7 /* Categories */,
@@ -544,6 +533,17 @@
 			path = CustomServices;
 			sourceTree = "<group>";
 		};
+		F9F18A4722A7A7F700348FA7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F9F18A4822A7A7F700348FA7 /* Dictionary+Add.swift */,
+				F9F18A4922A7A7F700348FA7 /* String+Add.swift */,
+				F9F18A4A22A7A7F700348FA7 /* Data+Add.swift */,
+				F9F18A4B22A7A7F700348FA7 /* Array+Add.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -724,7 +724,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F94988D422759FEA00B97C30 /* String+Add.swift in Sources */,
 				F9A83A742269B3FC0099683E /* PLTokenSetting.swift in Sources */,
 				F9B286D3224E1CA8005D30C7 /* BDDefautService.swift in Sources */,
 				F9B28639224CAF85005D30C7 /* BDAPIManagerDataReformer.swift in Sources */,
@@ -738,25 +737,26 @@
 				F9B28684224CC372005D30C7 /* ViewController.swift in Sources */,
 				F9B28636224CAF85005D30C7 /* BDCommonParamsGenerator.swift in Sources */,
 				F94988D82275A50F00B97C30 /* PLInfoAPIDataReformer.swift in Sources */,
-				F9A83A7D226D925B0099683E /* Data+Add.swift in Sources */,
 				F94988D0227585E600B97C30 /* DataReformerCreatingOverlookViewController.swift in Sources */,
 				F9B28641224CAF85005D30C7 /* BDNetworkCacheManager.swift in Sources */,
 				F9B2863F224CAF85005D30C7 /* BDResponseSerialization.swift in Sources */,
 				F94988CC2275518200B97C30 /* BDNetworkFileClient.swift in Sources */,
+				F9F18A4C22A7A7F700348FA7 /* Dictionary+Add.swift in Sources */,
 				F9B286CB224E1C4B005D30C7 /* PinsLifeService.swift in Sources */,
 				F9B286CF224E1C4B005D30C7 /* CommonService.swift in Sources */,
+				F9F18A4F22A7A7F700348FA7 /* Array+Add.swift in Sources */,
 				F9B28637224CAF85005D30C7 /* BDNetworkingContext.swift in Sources */,
-				F9A83A7B226D8FA90099683E /* Dictionary+Add.swift in Sources */,
 				F9B2863C224CAF85005D30C7 /* BDRequestGenerator.swift in Sources */,
 				F9B286CD224E1C4B005D30C7 /* PLPythonServer.swift in Sources */,
+				F9F18A4E22A7A7F700348FA7 /* Data+Add.swift in Sources */,
 				F9B286CE224E1C4B005D30C7 /* PLTeleParseServer.swift in Sources */,
 				F9A83A77226D4AD70099683E /* LogDisplayingViewController.swift in Sources */,
 				F9B28645224CAF85005D30C7 /* BDAPIProxy.swift in Sources */,
 				F9BF4A4E228BFE0400324256 /* PLFDLoginAPIManager.swift in Sources */,
 				F9B286D0224E1C4B005D30C7 /* RemoteControlService.swift in Sources */,
 				F9B2863E224CAF85005D30C7 /* BDDataResponse.swift in Sources */,
-				F9A83A7F226D93150099683E /* Array+Add.swift in Sources */,
 				F94988D222758C2100B97C30 /* PLFollowupTaskListDataReformer.swift in Sources */,
+				F9F18A4D22A7A7F700348FA7 /* String+Add.swift in Sources */,
 				F9B28644224CAF85005D30C7 /* BDService.swift in Sources */,
 				F9B28638224CAF85005D30C7 /* BDCache.swift in Sources */,
 				F9B28647224CAF85005D30C7 /* NSObject+BDNetworkingMethods.swift in Sources */,

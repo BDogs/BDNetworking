@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     
-    public func fileName(separator: String?) -> String {
+    func fileName(separator: String?) -> String {
         guard let separator = separator else { return "" }
         var temp = components(separatedBy: "\(separator)")
         temp.removeAll { (element) -> Bool in
