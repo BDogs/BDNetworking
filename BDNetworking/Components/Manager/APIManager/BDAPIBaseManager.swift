@@ -40,7 +40,7 @@ open class BDAPIBaseManager: NSObject {
     }()
     
     // MARK: - life cycle
-    public override init() {
+    required override public init() {
         
     }
     
@@ -119,7 +119,7 @@ open class BDAPIBaseManager: NSObject {
             }
             
             // 网络请求
-            if BDNetworkingContext.sharedInstance.isReachable {
+            if BDNetworkingContext.shared.isReachable {
 //                UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 self.isLoading = true
                 let httpMethod = self.child.requestType()

@@ -34,7 +34,7 @@ class BDDefautService: BDService, BDServiceProtocol {
 
     // MARK: - BDServiceProtocol
     var isOnline: Bool {
-        return BDNetworkingContext.sharedInstance.isOnline
+        return BDNetworkingContext.shared.isOnline
     }
     
     var offlineApiBaseUrl: String {

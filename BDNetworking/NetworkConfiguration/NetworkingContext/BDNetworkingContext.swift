@@ -17,7 +17,6 @@ public struct BDServiceIdentifier {
     public static let kPinsLifeService = "PinsLifeService"
     public static let kPLPythonServer = "PLPythonServer"
     public static let kPLTeleParseServer = "PLTeleParseServer"
-
     public static let kPLProductService = "PLProductService"
 }
 
@@ -28,8 +27,27 @@ public class BDNetworkingConfiguration {
     public static let cacheCountLimit: Int = 1000
 }
 
+public enum BDNetworkingEnvironmentCode: Int {
+    case develep = 0
+    case testing
+    case production
+    
+    public var description: String {
+        get {
+            switch self {
+            case .develep:
+                return "开发环境"
+            case .testing:
+                return "测试环境"
+            case .production:
+                return "生产环境"
+            }
+        }
+    }
+}
+
 public class BDNetworkingContext: NSObject {
-    public static let sharedInstance = BDNetworkingContext()
+    public static let shared = BDNetworkingContext()
     public var environmentCode: Int = 0
     public var accessToken: String?
     
@@ -61,6 +79,13 @@ public class BDNetworkingContext: NSObject {
         get {
             return (reachabilityManager?.isReachableOnEthernetOrWiFi)!
         }
+    }
+    
+    public func listen(call: @escaping ((_ isReachable: Bool) -> Void)) -> Void {
+        reachabilityManager?.listener = { [weak self] (status) in
+           call(self?.isReachable ?? false)
+        }
+        reachabilityManager?.startListening()
     }
     
     // updateTokenAPIManager

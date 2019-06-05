@@ -129,13 +129,10 @@ public enum BDAPIRequestType: String {
             }
             let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: serviceIdentifier)
             // log
-            BDNetworkLogger.sharedInstance.logDebugInfo(request: request!, relativeUrl: relativeUrl, service: service!, requestParams: params)
+            BDNetworkLogger.shared.logDebugInfo(request: request!, relativeUrl: relativeUrl, service: service!, requestParams: params)
             
             var dataRequest: DataRequest?
             dataRequest = manager.request(request!).responseData { (response) in
-//                if response.request?.url?.absoluteString == "https://pinsmedical.com:5200/captcha" {
-//                    print(response.data)
-//                }
                 
                 self.requestCompleted(request: request!, task: dataRequest!.task!, response: response.response, data: response.data, error: response.error, completionHandler: completionHandler)
             }
@@ -184,7 +181,7 @@ public enum BDAPIRequestType: String {
             let result = BDResponseSerialization.serializeResponseJSON(response: response, data: data, error: error)
             let dataResponse = BDDataResponse(request: request, requestId: requestId, response: response, data: data, result: result)
             // log
-            BDNetworkLogger.sharedInstance.logDebugInfo(response: dataResponse, error: dataResponse.result.error)
+            BDNetworkLogger.shared.logDebugInfo(response: dataResponse, error: dataResponse.result.error)
             
             completionHandler(dataResponse)
     }
