@@ -270,7 +270,7 @@ open class BDAPIBaseManager: NSObject {
     }
     
     private func removeRequestIdFromList(requestId: Int) -> Void {
-        let index = requestList.index(of: requestId)
+        let index = requestList.firstIndex(of: requestId)
         guard index != nil else {
             return
         }
