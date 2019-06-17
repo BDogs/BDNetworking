@@ -37,7 +37,7 @@ public protocol BDServiceProtocol {
     func shouldCallBackByFailedOnCallingAPI(response: BDDataResponse<Any>?) -> Bool
 }
 
-public class BDService: NSObject {
+open class BDService: NSObject {
 
     public lazy var child: BDServiceProtocol? = {
         return self as? BDServiceProtocol
