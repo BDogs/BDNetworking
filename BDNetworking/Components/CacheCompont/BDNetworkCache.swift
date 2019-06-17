@@ -9,30 +9,30 @@
 //import UIKit
 import Foundation
 
-class BDNetworkCache: NSObject {
+public class BDNetworkCache: NSObject {
 
     private(set) var data: Data?
     private(set) var lastUpdateDate: Date?
     
-    var isOutOfDate: Bool {
+    public var isOutOfDate: Bool {
         get {
             let timeInterval = Date().timeIntervalSince(self.lastUpdateDate!)
             return timeInterval > BDNetworkingConfiguration.cacheOutdateTimeSeconds
         }
     }
     
-    var isEmpty: Bool {
+    public var isEmpty: Bool {
         get {
             return self.data == nil || (self.data != nil && self.data!.count <= 0)
         }
     }
     
-    init(data: Data) {
+    public init(data: Data) {
         super.init()
         updateData(data: data)
     }
     
-    func updateData(data: Data) -> Void {
+    public func updateData(data: Data) -> Void {
         self.data = data
         self.lastUpdateDate = Date(timeIntervalSinceNow: 0)
     }

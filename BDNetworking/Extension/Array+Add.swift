@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Array {
+internal extension Array {
     
     func json() -> String? {
         var paramJson: String?

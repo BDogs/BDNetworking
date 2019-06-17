@@ -8,7 +8,7 @@
 
 //import UIKit
 import Foundation
-protocol BDServiceFactoryDataSource {
+public protocol BDServiceFactoryDataSource {
     /*
      * key为service的Identifier
      * value为service的Class的字符串
@@ -16,10 +16,10 @@ protocol BDServiceFactoryDataSource {
     func servicesKindsOfServiceFactory() -> [String: String]
 }
 
-class BDServiceFactory: NSObject {
-    static let kBDServiceDefault = "BDDefautService"
-    static let shareInstance = BDServiceFactory()
-    var serviceStorage: [String: BDService] = [:]
+public class BDServiceFactory: NSObject {
+    public static let kBDServiceDefault = "BDDefautService"
+    public static let shareInstance = BDServiceFactory()
+    public var serviceStorage: [String: BDService] = [:]
     
     
     

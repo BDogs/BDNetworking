@@ -8,6 +8,6 @@
 
 //import UIKit
 import Foundation
-class BDCache: NSObject {
+public class BDCache: NSObject {
 
 }

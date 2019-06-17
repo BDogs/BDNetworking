@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Dictionary {
+internal extension Dictionary {
     
     
     func json() -> String? {

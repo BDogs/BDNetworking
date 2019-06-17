@@ -9,7 +9,7 @@
 
 import Foundation
 
-class BDLoggerConfiguration: NSObject {
+public class BDLoggerConfiguration: NSObject {
     /** 渠道ID */
     private(set) var channelID: String?
     /** app标志 */

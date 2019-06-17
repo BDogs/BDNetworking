@@ -16,7 +16,7 @@ public enum BDAPIRequestType: String {
     case delete = "DELETE"
 }
 
-@objc class BDAPIProxy: NSObject {
+@objc public class BDAPIProxy: NSObject {
     public static let defaultHTTPHeaders: HTTPHeaders = {
         // Accept-Encoding HTTP Header; see https://tools.ietf.org/html/rfc7230#section-4.2.3
         let acceptEncoding: String = "gzip;q=1.0, compress;q=0.5"
@@ -92,7 +92,7 @@ public enum BDAPIRequestType: String {
         "https://pinsmedical.com": .disableEvaluation
     ]
     
-    lazy var sessionConfiguration: URLSessionConfiguration = {
+    public lazy var sessionConfiguration: URLSessionConfiguration = {
         var configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = BDNetworkingConfiguration.timeoutIntervalForRequest
         configuration.requestCachePolicy = .useProtocolCachePolicy
@@ -101,9 +101,9 @@ public enum BDAPIRequestType: String {
         return configuration
     }()
     
-    static let shareInstance = BDAPIProxy()
+    public static let shareInstance = BDAPIProxy()
     // 请求任务调度队列
-    lazy var dispatchTable: [Int: URLSessionTask] = [:]
+    public lazy var dispatchTable: [Int: URLSessionTask] = [:]
     
     lazy var manager: SessionManager = {
          var manager = SessionManager(configuration: self.sessionConfiguration, serverTrustPolicyManager: ServerTrustPolicyManager(policies: self.serverTrustPolicies))

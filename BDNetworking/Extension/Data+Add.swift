@@ -8,6 +8,6 @@
 
 import Foundation
 
-extension Data {
+internal extension Data {
     
 }

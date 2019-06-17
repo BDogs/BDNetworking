@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension String {
+internal extension String {
     
     func fileName(separator: String?) -> String {
         guard let separator = separator else { return "" }

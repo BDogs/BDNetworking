@@ -8,7 +8,7 @@
 
 //import UIKit
 import Foundation
-class BDDefautService: BDService, BDServiceProtocol {
+public class BDDefautService: BDService, BDServiceProtocol {
     
     // token 失效
     public static let kNotification_tokenInvalid = "kNotification_tokenInvalid"
@@ -20,7 +20,7 @@ class BDDefautService: BDService, BDServiceProtocol {
     fileprivate let kTokenStatus = "kTokenStatus"
     
     /// 提供拦截器集中处理Service错误问题，比如token失效要抛通知等
-    func shouldCallBackByFailedOnCallingAPI(response: BDDataResponse<Any>?) -> Bool {
+    public func shouldCallBackByFailedOnCallingAPI(response: BDDataResponse<Any>?) -> Bool {
         let dic = response?.result.value as? [String: Any]
         if ((dic?[kTokenStatus] as? String) != nil) && dic?[kTokenStatus] as! String == "expired_access_token" {
             let notificationName = Notification.Name(rawValue: BDDefautService.kNotification_tokenInvalid)
@@ -33,69 +33,69 @@ class BDDefautService: BDService, BDServiceProtocol {
 
 
     // MARK: - BDServiceProtocol
-    var isOnline: Bool {
+    public var isOnline: Bool {
         return BDNetworkingContext.shared.isOnline
     }
     
-    var offlineApiBaseUrl: String {
+    public var offlineApiBaseUrl: String {
        return ""
     }
     
-    var onlineApiBaseUrl: String {
+    public var onlineApiBaseUrl: String {
         return ""
     }
     
-    var offlineHeaderFields: [String : String] {
+    public var offlineHeaderFields: [String : String] {
         return [:]
     }
     
-    var onlineHeaderFields: [String : String] {
+    public var onlineHeaderFields: [String : String] {
         return [:]
     }
     
-    var offlinePrivateKey: String {
+    public var offlinePrivateKey: String {
         return ""
     }
     
-    var onlinePrivateKey: String {
+    public var onlinePrivateKey: String {
         return ""
     }
     
-    var offlinePublicKey: String {
+    public var offlinePublicKey: String {
         return ""
     }
     
-    var onlinePublicKey: String {
+    public var onlinePublicKey: String {
         return ""
     }
     
-    var onlineApiVersion: String {
+    public var onlineApiVersion: String {
         return ""
     }
     
-    var offlineApiVersion: String {
+    public var offlineApiVersion: String {
         return ""
     }
     
-    var onlineExtraParmas: [String: Any] {
+    public var onlineExtraParmas: [String: Any] {
         return [:]
     }
  
-    var offlineExtraParmas: [String: Any] {
+    public var offlineExtraParmas: [String: Any] {
         return [:]
     }
     
-    var onlineExtraHeaderFields: [String : String] {
+    public var onlineExtraHeaderFields: [String : String] {
         return [:]
     }
     
-    var offlineExtraHeaderFields: [String : String] {
+    public var offlineExtraHeaderFields: [String : String] {
         return [:]
     }
     
     
     // 重载，定制 URL 的拼接规则
-    override func appendURL(relativeUrl: String) -> String {
+    override public func appendURL(relativeUrl: String) -> String {
         var urlString: String
         if self.apiVersion.isEmpty {
             urlString = self.apiBaseUrl + "/" + relativeUrl

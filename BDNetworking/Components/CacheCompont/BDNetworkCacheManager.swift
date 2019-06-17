@@ -8,18 +8,18 @@
 
 //import UIKit
 import Foundation
-class BDNetworkCacheManager: NSObject {
+public class BDNetworkCacheManager: NSObject {
 
-    static let sharedInstance = BDNetworkCacheManager()
-    var cache = NSCache<AnyObject, AnyObject>()
+    public static let sharedInstance = BDNetworkCacheManager()
+    public var cache = NSCache<AnyObject, AnyObject>()
 
-    override init() {
+    public override init() {
         super.init()
         cache.countLimit = BDNetworkingConfiguration.cacheCountLimit
         cache.name = "BDNetworkCache"
     }
     
-    func transformUrlParamsToSortedArray(params: [String: Any], isForSignature: Bool = false) -> [String] {
+    public func transformUrlParamsToSortedArray(params: [String: Any], isForSignature: Bool = false) -> [String] {
         var result: [String] = []
         for (key, value) in params {
             var newValue = value as? String
@@ -38,7 +38,7 @@ class BDNetworkCacheManager: NSObject {
         return result
     }
     
-    func transformUrlParamsToString(params: [String: Any], isForSignature: Bool = false) -> String {
+    public func transformUrlParamsToString(params: [String: Any], isForSignature: Bool = false) -> String {
         let sortedArray = transformUrlParamsToSortedArray(params: params, isForSignature: isForSignature)
         var paramString = ""
         
@@ -52,7 +52,7 @@ class BDNetworkCacheManager: NSObject {
     }
     
     // MARK: - save
-    func saveCache(data: Data, key: AnyObject) -> Void {
+    public func saveCache(data: Data, key: AnyObject) -> Void {
         var cachedObject = cache.object(forKey: key)
         if cachedObject == nil {
             cachedObject = BDNetworkCache(data: data)
@@ -60,7 +60,7 @@ class BDNetworkCacheManager: NSObject {
         cache.setObject(cachedObject!, forKey: key)
     }
     
-    func saveCache(
+    public func saveCache(
         data: Data,
         serviceIdentifier: String,
         relativeUrl: String,
@@ -72,7 +72,7 @@ class BDNetworkCacheManager: NSObject {
     }
     
     // MARK: - fetch
-    func fetchCache(key: AnyObject) -> Data? {
+    public func fetchCache(key: AnyObject) -> Data? {
         let cachedObject = cache.object(forKey: key) as? BDNetworkCache
         if cachedObject == nil || cachedObject!.isOutOfDate || cachedObject!.isEmpty {
             return nil
@@ -81,7 +81,7 @@ class BDNetworkCacheManager: NSObject {
         }
     }
     
-    func fetchCache(
+    public func fetchCache(
         serviceIdentifier: String,
         relativeUrl: String,
         requestParams: [String: Any])
@@ -91,11 +91,11 @@ class BDNetworkCacheManager: NSObject {
     }
     
     // MARK: - delete
-    func clean() -> Void {
+    public func clean() -> Void {
         cache.removeAllObjects()
     }
     
-    func deleteCache(
+    public func deleteCache(
         serviceIdentifier: String,
         relativeUrl: String,
         requestParams: [String: Any])

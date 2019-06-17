@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol BDServiceProtocol {
+public protocol BDServiceProtocol {
     var isOnline: Bool { get }
     
     var offlineApiBaseUrl: String { get }
@@ -37,41 +37,41 @@ protocol BDServiceProtocol {
     func shouldCallBackByFailedOnCallingAPI(response: BDDataResponse<Any>?) -> Bool
 }
 
-class BDService: NSObject {
+public class BDService: NSObject {
 
-    lazy var child: BDServiceProtocol? = {
+    public lazy var child: BDServiceProtocol? = {
         return self as? BDServiceProtocol
     }()
 
-    required override init() {
+    public required override init() {
         
     }
     
-    var privateKey: String {
+    public var privateKey: String {
         return ((child?.isOnline)! ? child?.onlinePrivateKey : child?.offlinePrivateKey)!
     }
     
-    var publicKey: String {
+    public var publicKey: String {
         return ((child?.isOnline)! ? child?.onlinePublicKey : child?.offlinePublicKey)!
     }
     
-    var apiBaseUrl: String {
+    public var apiBaseUrl: String {
         return ((child?.isOnline)! ? child?.onlineApiBaseUrl : child?.offlineApiBaseUrl)!
     }
     
-    var apiVersion: String {
+    public var apiVersion: String {
         return ((child?.isOnline)! ? child?.onlineApiVersion : child?.offlineApiVersion)!
     }
     
-    var headerFields: [String: String] {
+    public var headerFields: [String: String] {
         return ((child?.isOnline)! ? child?.onlineHeaderFields : child?.offlineHeaderFields)!
     }
     
-    var extraParams: [String: Any] {
+    public var extraParams: [String: Any] {
         return ((child?.isOnline)! ? child?.onlineExtraParmas : child?.offlineExtraParmas)!
     }
     
-    var extraHeaderFields: [String: String] {
+    public var extraHeaderFields: [String: String] {
         return ((child?.isOnline)! ? child?.onlineExtraHeaderFields : child?.offlineExtraHeaderFields) ?? [:]
     }
     

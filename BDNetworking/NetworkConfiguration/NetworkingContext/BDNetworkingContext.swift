@@ -9,7 +9,7 @@
 //import UIKit
 import Alamofire
 
-enum BDAppType {
+public enum BDAppType {
     case xxx
 }
 
@@ -69,13 +69,13 @@ public class BDNetworkingContext: NSObject {
         }
     }
     
-    var isReachableOnWWAN: Bool  {
+    public var isReachableOnWWAN: Bool  {
         get {
             return (reachabilityManager?.isReachableOnWWAN)!
         }
     }
     
-    var isReachableOnEthernetOrWiFi: Bool {
+    public var isReachableOnEthernetOrWiFi: Bool {
         get {
             return (reachabilityManager?.isReachableOnEthernetOrWiFi)!
         }

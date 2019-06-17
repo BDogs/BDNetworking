@@ -9,16 +9,16 @@
 //import UIKit
 import Foundation
 
-extension Notification.Name {
-    public static let BDNetworkLoggerDidUpudate = Notification.Name.init(rawValue: "BDNetworkLoggerDidUpudate")
+public extension Notification.Name {
+    static let BDNetworkLoggerDidUpudate = Notification.Name.init(rawValue: "BDNetworkLoggerDidUpudate")
 }
 
-class BDNetworkLogger: NSObject {
+public class BDNetworkLogger: NSObject {
 
-    static let shared = BDNetworkLogger()
+    public static let shared = BDNetworkLogger()
     lazy var configParams = BDLoggerConfiguration()
     
-    var cacheslimit = 50
+    public var cacheslimit = 50
     
     public var caches: [String] = [] {
         didSet {
@@ -30,13 +30,13 @@ class BDNetworkLogger: NSObject {
     }
     
     
-    override init() {
+    public override init() {
         super.init()
 //        configParams.configWithAppType(appType: .xxx)
     }
     
     
-    func logDebugInfo(
+    public func logDebugInfo(
         request: URLRequest,
         relativeUrl: String?,
         service: BDService,
@@ -72,7 +72,7 @@ class BDNetworkLogger: NSObject {
             #endif
     }
     
-    func logDebugInfo(
+    public func logDebugInfo(
         response: BDDataResponse<Any>,
         error: Error?)
         -> Void {

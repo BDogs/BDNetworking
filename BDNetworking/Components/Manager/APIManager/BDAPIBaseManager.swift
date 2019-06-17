@@ -9,11 +9,11 @@
 //import UIKit
 import Foundation
 
-let kBDAPIBaseManagerRequestID = "kBDAPIBaseManagerRequestID"
-let kBSUserTokenInvalidNotification = "kBSUserTokenInvalidNotification"
-let kBSUserTokenIllegalNotification = "kBSUserTokenIllegalNotification"
-let kBSUserTokenNotificationUserInfoKeyRequestToContinue = "kBSUserTokenNotificationUserInfoKeyRequestToContinue"
-let kBSUserTokenNotificationUserInfoKeyManagerToContinue = "kBSUserTokenNotificationUserInfoKeyManagerToContinue"
+public let kBDAPIBaseManagerRequestID = "kBDAPIBaseManagerRequestID"
+public let kBSUserTokenInvalidNotification = "kBSUserTokenInvalidNotification"
+public let kBSUserTokenIllegalNotification = "kBSUserTokenIllegalNotification"
+public let kBSUserTokenNotificationUserInfoKeyRequestToContinue = "kBSUserTokenNotificationUserInfoKeyRequestToContinue"
+public let kBSUserTokenNotificationUserInfoKeyManagerToContinue = "kBSUserTokenNotificationUserInfoKeyManagerToContinue"
 
 
 open class BDAPIBaseManager: NSObject {
