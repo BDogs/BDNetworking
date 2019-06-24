@@ -28,24 +28,21 @@ public class BDServiceFactory: NSObject {
     ///
     /// - Parameter identifier: 继承于 BDService 类的名
     /// - Returns: BDService
-    public func serviceWithIdentifier(identifier: String) -> BDService? {
+    public func serviceWithIdentifier(identifier: String, bundleName: String) -> BDService? {
         if serviceStorage[identifier] == nil {
-            serviceStorage[identifier] = newService(identifier: identifier)
+            serviceStorage[identifier] = newService(identifier: identifier, bundleName: bundleName)
         }
         return serviceStorage[identifier]
     }
     
-    fileprivate func newService(identifier: String) -> BDService? {
+    fileprivate func newService(identifier: String, bundleName: String) -> BDService? {
 //        if identifier == BDServiceFactory.kBDServiceDefault  {
         //Bundle.main
-            var appName: String? = Bundle(for: BDServiceFactory.self).object(forInfoDictionaryKey: "CFBundleName") as! String?
-            appName = appName?.replacingOccurrences(of: "-", with: "_")
-            let Cls = NSClassFromString(appName! + "." + identifier) as? BDService.Type
-            let service = Cls?.init()
-            
-            return service
-//        }
-//        return nil
+//            var appName: String? = Bundle(for: BDServiceFactory.self).object(forInfoDictionaryKey: "CFBundleName") as! String?
+//            appName = appName?.replacingOccurrences(of: "-", with: "_")
+        guard let Cls = NSClassFromString(bundleName + "." + identifier) as? BDService.Type else { return nil }
+        let service = Cls.init()
+        return service
     }
     
     

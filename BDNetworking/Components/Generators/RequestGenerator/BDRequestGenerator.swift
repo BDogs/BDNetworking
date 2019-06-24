@@ -38,12 +38,13 @@ class BDRequestGenerator {
     ///
     public func gernerateApiRequest (
         serviceIdentifier: String,
+        serviceBundleName: String,
         requestParams: [String: Any]? = nil,
         relativeUrl: String,
         method: BDAPIRequestType = .get,
         encodingType: BDParameterEncoding)
         -> URLRequest? {
-            guard let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: serviceIdentifier) else {
+            guard let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: serviceIdentifier, bundleName: serviceBundleName) else {
                 // 这里认为 Service 为 nil，它的生成失败是派生类的定义有问题，需要提醒开发者
                 return nil
             }
@@ -96,38 +97,42 @@ class BDRequestGenerator {
     
     public func generateGETRequest(
         serviceIdentifier: String,
+        serviceBundleName: String,
         requestParams: [String: Any]? = nil,
         relativeUrl: String,
         encodingType: BDParameterEncoding)
         -> URLRequest? {
-            return gernerateApiRequest(serviceIdentifier: serviceIdentifier, requestParams: requestParams, relativeUrl: relativeUrl, method: .get, encodingType: encodingType)
+            return gernerateApiRequest(serviceIdentifier: serviceIdentifier, serviceBundleName: serviceBundleName, requestParams: requestParams, relativeUrl: relativeUrl, method: .get, encodingType: encodingType)
     }
     
     func generatePOSTRequest(
         serviceIdentifier: String,
+        serviceBundleName: String,
         requestParams: [String: Any]? = nil,
         relativeUrl: String,
         encodingType: BDParameterEncoding)
         -> URLRequest? {
-            return gernerateApiRequest(serviceIdentifier: serviceIdentifier, requestParams: requestParams, relativeUrl: relativeUrl, method: .post, encodingType: encodingType)
+            return gernerateApiRequest(serviceIdentifier: serviceIdentifier, serviceBundleName: serviceBundleName, requestParams: requestParams, relativeUrl: relativeUrl, method: .post, encodingType: encodingType)
     }
     
     func generatePUTRequest(
         serviceIdentifier: String,
+        serviceBundleName: String,
         requestParams: [String: Any]? = nil,
         relativeUrl: String,
         encodingType: BDParameterEncoding)
         -> URLRequest? {
-            return gernerateApiRequest(serviceIdentifier: serviceIdentifier, requestParams: requestParams, relativeUrl: relativeUrl, method: .put, encodingType: encodingType)
+            return gernerateApiRequest(serviceIdentifier: serviceIdentifier, serviceBundleName: serviceBundleName, requestParams: requestParams, relativeUrl: relativeUrl, method: .put, encodingType: encodingType)
     }
     
     func generateDELETERequest(
         serviceIdentifier: String,
+        serviceBundleName: String,
         requestParams: [String: Any]? = nil,
         relativeUrl: String,
         encodingType: BDParameterEncoding)
         -> URLRequest? {
-            return gernerateApiRequest(serviceIdentifier: serviceIdentifier, requestParams: requestParams, relativeUrl: relativeUrl, method: .delete, encodingType: encodingType)
+            return gernerateApiRequest(serviceIdentifier: serviceIdentifier, serviceBundleName: serviceBundleName, requestParams: requestParams, relativeUrl: relativeUrl, method: .delete, encodingType: encodingType)
     }
     
     // TODO: TODO：上传和下载

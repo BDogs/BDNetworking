@@ -114,6 +114,7 @@ public enum BDAPIRequestType: String {
     /// 这个函数存在的意义在于，如果将来要把AFNetworking换掉，只要修改这个函数的实现即可
     public func callApi(
         serviceIdentifier: String,
+        serviceBundleName: String,
         relativeUrl: String,
         params: [String: Any]? = nil,
         method: BDAPIRequestType = .get,
@@ -121,13 +122,13 @@ public enum BDAPIRequestType: String {
         completionHandler: @escaping (BDDataResponse<Any>) -> Void)
         -> Int {
             
-            let request = BDRequestGenerator.shareInstance.gernerateApiRequest(serviceIdentifier: serviceIdentifier, requestParams: params, relativeUrl: relativeUrl, method: method, encodingType: encodingType)
+            let request = BDRequestGenerator.shareInstance.gernerateApiRequest(serviceIdentifier: serviceIdentifier, serviceBundleName: "serviceBundleName", requestParams: params, relativeUrl: relativeUrl, method: method, encodingType: encodingType)
             
             guard request != nil else {
                 self.requestCompleted(request: nil, task: nil, response: nil, data: nil, error: BDError.generateURLRequestFailed, completionHandler: completionHandler)
                 return 0
             }
-            let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: serviceIdentifier)
+            let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: serviceIdentifier, bundleName: serviceBundleName)
             // log
             BDNetworkLogger.shared.logDebugInfo(request: request!, relativeUrl: relativeUrl, service: service!, requestParams: params)
             

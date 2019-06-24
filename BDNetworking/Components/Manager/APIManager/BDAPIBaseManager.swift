@@ -92,7 +92,7 @@ open class BDAPIBaseManager: NSObject {
         var requestId = 0
         
         // 添加 Service 的 extraParmas
-        let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: self.child.serviceType())
+        let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: child.serviceType(), bundleName: child.serviceBundleName())
         // 这里认为 Service 为 nil，它的生成失败是派生类的定义有问题，需要提醒开发者
         assert(service != nil, "service 生成失败")
         let serviceCommonParams = self.reformServiceCommonParams(params: service?.extraParams) ?? [:]
@@ -147,7 +147,7 @@ open class BDAPIBaseManager: NSObject {
         var needCallBack = true
         
         // 集中处理 Service 错误问题，比如token失效要抛通知等
-        let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: self.child.serviceType())
+        let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: child.serviceType(), bundleName: child.serviceBundleName())
         if service as? BDServiceProtocol != nil {
           needCallBack = (service?.child!.shouldCallBackByFailedOnCallingAPI(response: response))!
         }
@@ -258,7 +258,7 @@ open class BDAPIBaseManager: NSObject {
     
     // MARK: - private func
     private func BDCallAPI(method: BDAPIRequestType, params: [String : Any]? = nil) -> Int {
-        let requestId = BDAPIProxy.shareInstance.callApi(serviceIdentifier: self.child.serviceType(), relativeUrl: self.child.relativeUrl(), params: params, method: method, encodingType: self.child.encodingType) { (response) in
+        let requestId = BDAPIProxy.shareInstance.callApi(serviceIdentifier: child.serviceType(), serviceBundleName: child.serviceBundleName(), relativeUrl: child.relativeUrl(), params: params, method: method, encodingType: child.encodingType) { (response) in
 //            UIApplicatbbion.shared.isNetworkActivityIndicatorVisible = false
             if response.result.isSuccess {
                 self.successedOnCallingAPI(response: response)
@@ -343,6 +343,7 @@ open class BDAPIBaseManager: NSObject {
 public protocol BDAPIManagerProtocal: NSObjectProtocol {
     func relativeUrl() -> String
     func serviceType() -> String
+    func serviceBundleName() -> String
     func requestType() -> BDAPIRequestType
     func shouldCache() -> Bool
     // optional

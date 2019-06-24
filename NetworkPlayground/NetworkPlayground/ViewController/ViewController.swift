@@ -195,11 +195,14 @@ class ViewController: NSViewController {
             }
         }
 
-        requestWithParam(param: param, relativeUrl: relativeUrl, identifier: identifier)
+        requestWithParam(param: param, relativeUrl: relativeUrl, identifier: identifier, serviceBundleName: "NetworkPlayground")
     }
     
-    func requestWithParam(param: [String: Any], relativeUrl: String, identifier: String) -> Void {
-        let _ = BDAPIProxy.shareInstance.callApi(serviceIdentifier: identifier, relativeUrl: relativeUrl, params: param, method: .post, encodingType: .json) { [weak self] (response) in
+    func requestWithParam(param: [String: Any],
+                          relativeUrl: String,
+                          identifier: String,
+                          serviceBundleName: String) -> Void {
+        let _ = BDAPIProxy.shareInstance.callApi(serviceIdentifier: identifier, serviceBundleName: serviceBundleName, relativeUrl: relativeUrl, params: param, method: .post, encodingType: .json) { [weak self] (response) in
             let result = response.result.value as AnyObject
             guard !result.isKind(of: NSNull.self) else { return }
             if let jsonData = try? JSONSerialization.data(withJSONObject: result, options: []), let json = String(data: jsonData, encoding: .utf8)  {
