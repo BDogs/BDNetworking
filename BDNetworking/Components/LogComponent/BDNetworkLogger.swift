@@ -13,6 +13,19 @@ public extension Notification.Name {
     static let BDNetworkLoggerDidUpudate = Notification.Name.init(rawValue: "BDNetworkLoggerDidUpudate")
 }
 
+public struct BDNetworkRecord {
+    public let paramsJson: String
+    public let createTimestamp: TimeInterval
+    public let allHTTPHeaderFieldsJson: String
+    
+    public let requestParams: [String: Any]
+    public let relativeUrl: String?
+    public let serviceIdentifier: String
+    public var logString: String = ""
+    public let requestId: Int
+    
+}
+
 public class BDNetworkLogger: NSObject {
 
     public static let shared = BDNetworkLogger()
@@ -20,7 +33,7 @@ public class BDNetworkLogger: NSObject {
     
     public var cacheslimit = 50
     
-    public var caches: [String] = [] {
+    public var caches: [BDNetworkRecord] = [] {
         didSet {
             if caches.count >= cacheslimit {
                 caches.removeAll()
@@ -38,8 +51,11 @@ public class BDNetworkLogger: NSObject {
     
     public func logDebugInfo(
         request: URLRequest,
+        requestId: Int,
         relativeUrl: String?,
         service: BDService,
+        serviceIdentifier: String,
+        serviceBundleName: String,
         requestParams: [String: Any]?)
         -> Void {
             
@@ -52,9 +68,10 @@ public class BDNetworkLogger: NSObject {
             let paramJson = params.json() ?? "Json Error"
             let allHTTPHeaderFields = request.allHTTPHeaderFields ?? [:]
             let allHTTPHeaderFieldsJson = allHTTPHeaderFields.json() ?? "Json Error"
+            let apiName = relativeUrl ?? "N/A"
             
             logString.append("Date:\t\t\t\t\(date.description(with: Locale.current))\n")
-            logString.append("API Name:\t\t\t\(relativeUrl ?? "N/A")\n")
+            logString.append("API Name:\t\t\t\(apiName)\n")
             logString.append("HTTPMethod:\t\t\t\(request.httpMethod ?? "N/A")\n")
             logString.append("API Verison:\t\t\t\(service.apiVersion)\n")
             logString.append("Status:\t\t\t\t\(isOnline ? "online":"offline")\n")
@@ -68,8 +85,14 @@ public class BDNetworkLogger: NSObject {
             logString.append("Body:\n->\(String(data: request.httpBody ?? Data(), encoding: .utf8) ?? "N/A")\n")
             logString.append("\n\n**************************************************************\n*                         Request End                        *\n**************************************************************\n\n\n\n")
             print(logString)
-            caches.append(logString)
+            var record = BDNetworkRecord(paramsJson: paramJson, createTimestamp: date.timeIntervalSince1970, allHTTPHeaderFieldsJson: allHTTPHeaderFieldsJson, requestParams: params, relativeUrl: relativeUrl, serviceIdentifier: serviceIdentifier, requestId: requestId)
+            record.logString.append(logString)
+            caches.append(record)
+            
+            
             #endif
+            
+            
     }
     
     public func logDebugInfo(
@@ -110,7 +133,13 @@ public class BDNetworkLogger: NSObject {
             
             logString.append("\n\n==============================================================\n=                        Response End                        =\n==============================================================\n\n\n\n")
             print(logString)
-            caches.append(logString)
+            let requestId = response.requestId
+            if let index = caches.firstIndex(where: { $0.requestId == requestId }) {
+                var record = caches[index]
+                record.logString.append(logString)
+                caches[index] = record
+            }
+//            caches.append(logString)
 
             #endif
     }

@@ -121,25 +121,27 @@ public enum BDAPIRequestType: String {
         encodingType: BDParameterEncoding,
         completionHandler: @escaping (BDDataResponse<Any>) -> Void)
         -> Int {
-            
-            let request = BDRequestGenerator.shareInstance.gernerateApiRequest(serviceIdentifier: serviceIdentifier, serviceBundleName: "serviceBundleName", requestParams: params, relativeUrl: relativeUrl, method: method, encodingType: encodingType)
-            
-            guard request != nil else {
-                self.requestCompleted(request: nil, task: nil, response: nil, data: nil, error: BDError.generateURLRequestFailed, completionHandler: completionHandler)
+                        
+            guard let request = BDRequestGenerator.shareInstance.gernerateApiRequest(serviceIdentifier: serviceIdentifier, serviceBundleName: serviceBundleName, requestParams: params, relativeUrl: relativeUrl, method: method, encodingType: encodingType) else {
+                requestCompleted(request: nil, task: nil, response: nil, data: nil, error: BDError.generateURLRequestFailed, completionHandler: completionHandler)
                 return 0
             }
-            let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: serviceIdentifier, bundleName: serviceBundleName)
+            guard let service = BDServiceFactory.shareInstance.serviceWithIdentifier(identifier: serviceIdentifier, bundleName: serviceBundleName) else {
+                requestCompleted(request: nil, task: nil, response: nil, data: nil, error: BDError.generateServiceFailed, completionHandler: completionHandler)
+                return 0
+            }
             // log
-            BDNetworkLogger.shared.logDebugInfo(request: request!, relativeUrl: relativeUrl, service: service!, requestParams: params)
             
             var dataRequest: DataRequest?
-            dataRequest = manager.request(request!).responseData { (response) in
+            dataRequest = manager.request(request).responseData { (response) in
                 
-                self.requestCompleted(request: request!, task: dataRequest!.task!, response: response.response, data: response.data, error: response.error, completionHandler: completionHandler)
+                self.requestCompleted(request: request, task: dataRequest!.task!, response: response.response, data: response.data, error: response.error, completionHandler: completionHandler)
             }
-            let requestId = dataRequest?.task?.taskIdentifier
-            dispatchTable[requestId!] = dataRequest?.task!
-        return requestId!
+            let requestId = dataRequest?.task?.taskIdentifier ?? 0
+            dispatchTable[requestId] = dataRequest?.task
+            BDNetworkLogger.shared.logDebugInfo(request: request, requestId: requestId, relativeUrl: relativeUrl, service: service, serviceIdentifier: serviceIdentifier, serviceBundleName: serviceBundleName, requestParams: params)
+            
+        return requestId
     }
     
     // TODO:- TODO：上传和下载

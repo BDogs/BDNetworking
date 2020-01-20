@@ -33,7 +33,7 @@ class ViewController: NSViewController {
         didSet {
             BDNetworkingContext.shared.isOnline = isOnline
             environmentSelectPopUpButton.isHidden = isOnline
-            
+
             updateServiceNoteDisplay()
         }
     }
@@ -58,6 +58,8 @@ class ViewController: NSViewController {
         initializeServiceMenu()
         initializeTokenApiMenu()
         
+        updateServiceNoteDisplay()
+
         BDNetworkingContext.shared.listen { [weak self] (isReachable) in
             self?.isReachable = isReachable
         }
@@ -122,12 +124,26 @@ class ViewController: NSViewController {
     
     func fetchServiceNames() -> [String] {
         let manager = FileManager.default
-        let path = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/NetworkCustomSetting/CustomServices"
+        
+        let path = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/NetworkPlayground/NetworkPlayground/NetworkCustomSetting/CustomServices"
         guard let direnum = manager.enumerator(atPath: path) else { return [] }
         
         var fileNamesArr: [String] = []
+//
+//        do {
+//            let temp = try manager.contentsOfDirectory(atPath: path)
+//            for element in temp {
+//                if element.hasSuffix(".swift") {
+//                    if let fileName = element.components(separatedBy: "/").last {
+//                        fileNamesArr.append(fileName.replacingOccurrences(of: ".swift", with: ""))
+//                    }
+//                }
+//            }
+//        } catch let error {
+//            print(error)
+//        }
         while let element = direnum.nextObject() as? String {
-            
+
             if element.hasSuffix(".swift") {
                 if let fileName = element.components(separatedBy: "/").last {
                     fileNamesArr.append(fileName.replacingOccurrences(of: ".swift", with: ""))
@@ -218,6 +234,8 @@ class ViewController: NSViewController {
         guard let data = paramJson.data(using: .utf8) else { return }
         
         guard let param = try? JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String: Any] else { return }
+        
+        print(param)
     }
     
     @IBAction func isOnlineSwitchAction(_ sender: NSButton) {
@@ -274,6 +292,12 @@ class ViewController: NSViewController {
 
     }
     
+    @IBAction func testClickedAction(_ sender: NSButton) {
+        let str = responseTextView.string
+        requestWithParamJson(paramJson: str)
+    }
+    
+    
     // MARK: - Api Call Back
     func callUserLoginByCodeAPIManagerDidSuccess(manager: UserLoginByCodeAPIManager) -> Void {
     
@@ -317,6 +341,27 @@ class ViewController: NSViewController {
         
     }
 
+    func callPFOPatientLoginAPIManagerDidSuccess(manager: PFOPatientLoginAPIManager) -> Void {
+        let result = manager.fetchData(reformer: nil) as AnyObject
+        if let jsonData = try? JSONSerialization.data(withJSONObject: result, options: []), let json = String(data: jsonData, encoding: .utf8)  {
+            updateResponseDisplay(content: json)
+        } else {
+            updateResponseDisplay(content: result.description ?? "error")
+        }
+        
+        if let info = (result as? [String: Any])?["data"] as? [String: Any] {
+            let token = info["token"] as? String
+            BDNetworkingContext.shared.accessToken = token
+            selectedUserSetting.setting[BDNetworkingContext.shared.environmentCode]?.token = token
+            PLUserInfo.save(info: selectedUserSetting)
+        }
+        
+    }
+    
+    func callPFOPatientLoginAPIManagerDidFailed(manager: PFOPatientLoginAPIManager) -> Void {
+        
+    }
+
     
     // MARK: - Lazy Var
     lazy var loginer: UserLoginByCodeAPIManager = {
@@ -347,6 +392,9 @@ extension ViewController: BDAPIBaseManagerCallBackDelegate, BDAPIManagerSourceDe
         if let temp = manager as? PLFDLoginAPIManager {
             callPLFDLoginAPIManagerDidSuccess(manager: temp)
         }
+        if let temp = manager as? PFOPatientLoginAPIManager {
+            callPFOPatientLoginAPIManagerDidSuccess(manager: temp)
+        }
     }
     
     func managerCallAPIDidFailed(manager: BDAPIBaseManager) {
@@ -365,7 +413,11 @@ extension ViewController: BDAPIBaseManagerCallBackDelegate, BDAPIManagerSourceDe
             param["username"] = info?.userName//"18842310610"
             param["password"] = info?.vCode
         }
-
+        if let _ = manager as? PFOPatientLoginAPIManager {
+            param["username"] = info?.userName//"18842310610"
+            param["password"] = info?.vCode
+        }
+        
         return param
     }
 }

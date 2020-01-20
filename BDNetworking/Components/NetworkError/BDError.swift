@@ -35,6 +35,7 @@ public enum BDError: Error {
     case networkIsNotReachable
     case validateFailed(reason: ValidateFailureReson)
     case generateURLRequestFailed
+    case  generateServiceFailed
     case responseNil
     
     public enum ValidateFailureReson {

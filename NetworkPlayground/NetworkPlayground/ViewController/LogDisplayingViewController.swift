@@ -31,7 +31,7 @@ class LogDisplayingViewController: NSViewController {
         let caches = BDNetworkLogger.shared.caches
         
         for temp in caches {
-            content.append(temp)
+            content.append(temp.logString)
             content.append("\n")
         }
         noteLabel.stringValue = "logs: \(caches.count)"
