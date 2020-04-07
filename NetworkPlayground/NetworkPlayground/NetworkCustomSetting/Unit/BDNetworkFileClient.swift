@@ -23,6 +23,7 @@ enum BDNetworkFile {
     
     case dataReformer
     
+    
     var templeFilePath: String {
         get {
             switch self {
@@ -37,7 +38,7 @@ enum BDNetworkFile {
     
     var floderPath: String {
         get {
-            var path = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/NetworkPlayground/NetworkPlayground/NetworkCustomSetting/"
+            var path = "NetworkPlayground/NetworkPlayground/NetworkCustomSetting/"
             switch self {
             case .apiManager:
                 path += "APIManger"
@@ -51,11 +52,12 @@ enum BDNetworkFile {
 }
 
 class BDNetworkFileClient {
+    static var projectPath = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/"
     
     class func fetchFileContent(type: BDNetworkFile) -> String {
         
         let content: String
-        let path = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/NetworkPlayground/NetworkPlayground/NetworkCustomSetting/FileTemple/\(type.templeFilePath)"
+        let path = "\(projectPath)NetworkPlayground/NetworkPlayground/NetworkCustomSetting/FileTemple/\(type.templeFilePath)"
         
         do {
             content = try String(contentsOfFile: path)
@@ -73,7 +75,7 @@ class BDNetworkFileClient {
         guard !content.isEmpty else {
             return false
         }
-        var path = type.floderPath
+        var path = "\(projectPath)\(type.floderPath)"
         if let floder = floder {
             path += "/\(floder)"
         }

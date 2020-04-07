@@ -17,14 +17,14 @@ enum ___FILEBASENAMEASIDENTIFIER___ResponseError: Int, Error, LocalizedError {
     }
 }
 
-class ___FILEBASENAMEASIDENTIFIER___: BDAPIBaseManager {
+public class ___FILEBASENAMEASIDENTIFIER___: BDAPIBaseManager {
     // MARK: - override
-    required init() {
+    required public init() {
         super.init()
         self.validator = self
     }
     
-    override func reformParams(params: [String : Any]?) -> [String : Any]? {
+    override public func reformParams(params: [String : Any]?) -> [String : Any]? {
         var new: [String: Any] = params ?? [:]
         
         return super.reformParams(params: new)
@@ -33,37 +33,37 @@ class ___FILEBASENAMEASIDENTIFIER___: BDAPIBaseManager {
 }
 
 extension ___FILEBASENAMEASIDENTIFIER___: BDAPIManagerProtocal {
-    func shouldLoadFromNative() -> Bool {
+    public func shouldLoadFromNative() -> Bool {
         return false
     }
     
-    func shouldCache() -> Bool {
+    public func shouldCache() -> Bool {
         return false
     }
     
-    func requestType() -> BDAPIRequestType {
+    public func requestType() -> BDAPIRequestType {
         return .post
     }
     
-    func serviceType() -> String {
+    public func serviceType() -> String {
         return ___BDServiceType___
     }
     
-    func serviceBundleName() -> String {
+    public func serviceBundleName() -> String {
         return "BDNetworkExtension"
     }
     
-    func relativeUrl() -> String {
+    public func relativeUrl() -> String {
         return "___RelativeUrl___"
     }
 }
 
 extension ___FILEBASENAMEASIDENTIFIER___: BDAPIManagerValidator {
-    func isCallBackCorrect(manager: BDAPIBaseManager, callBackData: Any?) -> Bool {
+    public func isCallBackCorrect(manager: BDAPIBaseManager, callBackData: Any?) -> Bool {
         return true
     }
     
-    func isRequestParamsCorrect(manager: BDAPIBaseManager, params: [String : Any]?) -> Bool {
+    public func isRequestParamsCorrect(manager: BDAPIBaseManager, params: [String : Any]?) -> Bool {
         return true
     }
 }

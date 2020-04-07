@@ -28,6 +28,11 @@ class ViewController: NSViewController {
     @IBOutlet weak var paramList: NSTableView!
     
 //    @IBOutlet var paramTextView: NSTextView!
+    var projectPath = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/" {
+        didSet {
+            initializeServiceMenu()
+        }
+    }
     
     var isOnline = false {
         didSet {
@@ -125,23 +130,11 @@ class ViewController: NSViewController {
     func fetchServiceNames() -> [String] {
         let manager = FileManager.default
         
-        let path = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/NetworkPlayground/NetworkPlayground/NetworkCustomSetting/CustomServices"
+        let path = "\(projectPath)NetworkPlayground/NetworkPlayground/NetworkCustomSetting/CustomServices"
         guard let direnum = manager.enumerator(atPath: path) else { return [] }
         
         var fileNamesArr: [String] = []
-//
-//        do {
-//            let temp = try manager.contentsOfDirectory(atPath: path)
-//            for element in temp {
-//                if element.hasSuffix(".swift") {
-//                    if let fileName = element.components(separatedBy: "/").last {
-//                        fileNamesArr.append(fileName.replacingOccurrences(of: ".swift", with: ""))
-//                    }
-//                }
-//            }
-//        } catch let error {
-//            print(error)
-//        }
+
         while let element = direnum.nextObject() as? String {
 
             if element.hasSuffix(".swift") {
@@ -292,9 +285,19 @@ class ViewController: NSViewController {
 
     }
     
-    @IBAction func testClickedAction(_ sender: NSButton) {
-        let str = responseTextView.string
-        requestWithParamJson(paramJson: str)
+    @IBAction func projectRootSettingClickedAction(_ sender: NSButton) {
+//        let str = responseTextView.string
+//        requestWithParamJson(paramJson: str)
+        let openPannel = NSOpenPanel()
+        openPannel.canChooseFiles = false
+        openPannel.canChooseDirectories = true
+        openPannel.prompt = "打开";
+        openPannel.begin { [weak self] (response) in
+            print(openPannel.urls)
+            if let url = openPannel.urls.first?.absoluteString {
+                self?.projectPath = url.replacingOccurrences(of: "file://", with: "")
+            }
+        }
     }
     
     
