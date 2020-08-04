@@ -99,7 +99,10 @@ open class BDAPIBaseManager: NSObject {
         var reformedParams = self.reformParams(params: params) ?? [:]
         
         for (key, value) in serviceCommonParams {
-            reformedParams[key] = value
+            if !reformedParams.keys.contains(key) {
+                // 避免 service 里的公共参数覆盖掉 API 传参
+                reformedParams[key] = value
+            }
         }
         
         guard shouldCallAPI(params: reformedParams) else {
