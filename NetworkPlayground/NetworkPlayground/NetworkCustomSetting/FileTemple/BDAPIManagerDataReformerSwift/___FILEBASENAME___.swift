@@ -17,6 +17,7 @@ public class ___FILEBASENAMEASIDENTIFIER___: NSObject {
         public static let statusCode: InfoKey = InfoKey(rawValue: "status_code")
         public static let serverTime: InfoKey = InfoKey(rawValue: "server_time")
         public static let errorCode: InfoKey = InfoKey(rawValue: "error_code")
+        public static let errorLevel: InfoKey = InfoKey(rawValue: "error_level")
         public static let reformedData: InfoKey = InfoKey(rawValue: "kreformedData")
         ___InfoKeys___
     }

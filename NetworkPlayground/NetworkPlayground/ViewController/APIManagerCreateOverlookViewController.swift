@@ -67,7 +67,7 @@ class APIManagerCreateOverlookViewController: NSViewController {
         guard !fileName.isEmpty else {
             return
         }
-        let isSuccess = BDNetworkFileClient.save(type: .apiManager, content: textView.string, fileName: fileName, floder: floder)
+        let isSuccess = BDNetworkFileClient.shared.save(type: .apiManager, content: textView.string, fileName: fileName, floder: floder)
         
         let title = isSuccess ? "保存成功-\(fileName)" : "保存失败-\(fileName)"
         let alert = NSAlert()

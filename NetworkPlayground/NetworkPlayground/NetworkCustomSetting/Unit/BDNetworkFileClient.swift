@@ -52,9 +52,11 @@ enum BDNetworkFile {
 }
 
 class BDNetworkFileClient {
-    static var projectPath = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/"
+    static let shared = BDNetworkFileClient()
     
-    class func fetchFileContent(type: BDNetworkFile) -> String {
+    var projectPath = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/"
+    
+    func fetchFileContent(type: BDNetworkFile) -> String {
         
         let content: String
         let path = "\(projectPath)NetworkPlayground/NetworkPlayground/NetworkCustomSetting/FileTemple/\(type.templeFilePath)"
@@ -68,7 +70,7 @@ class BDNetworkFileClient {
     }
     
 
-    class func save(type: BDNetworkFile,
+    func save(type: BDNetworkFile,
                     content: String,
                     fileName: String,
                     floder: String?) -> Bool {

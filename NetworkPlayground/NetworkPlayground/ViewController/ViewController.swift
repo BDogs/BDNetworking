@@ -30,6 +30,7 @@ class ViewController: NSViewController {
 //    @IBOutlet var paramTextView: NSTextView!
     var projectPath = "/Users/zhugeyou/Desktop/MyGitHub/BDNetworking/" {
         didSet {
+            BDNetworkFileClient.shared.projectPath = projectPath
             initializeServiceMenu()
         }
     }
@@ -440,7 +441,7 @@ extension ViewController {
                 let info = APIInfo(relativeUrl: routeInputtingTextField.stringValue, service: service, requestType: .post)
                 controller.info = info
                 controller.isAuto = setting?["isAuto"] as? Bool ?? false
-                controller.content = BDNetworkFileClient.fetchFileContent(type: .apiManager)
+                controller.content = BDNetworkFileClient.shared.fetchFileContent(type: .apiManager)
             }
         } else if segue.identifier == "DataReformerCreating" {
             if let controller = segue.destinationController as? DataReformerCreatingOverlookViewController {

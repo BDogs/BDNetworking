@@ -25,6 +25,7 @@
 		F931EA2423B30C52006473C9 /* PLFDLoginAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F931E9BE23B30C52006473C9 /* PLFDLoginAPIManager.swift */; };
 		F94988CE227554E600B97C30 /* APIManagerCreateOverlookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94988CD227554E600B97C30 /* APIManagerCreateOverlookViewController.swift */; };
 		F94988D0227585E600B97C30 /* DataReformerCreatingOverlookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94988CF227585E600B97C30 /* DataReformerCreatingOverlookViewController.swift */; };
+		F9764979244AA84A00561B57 /* PLJavaServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9764978244AA84A00561B57 /* PLJavaServer.swift */; };
 		F9A83A712269B0370099683E /* PinsLifeTokenSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A83A702269B0370099683E /* PinsLifeTokenSettingViewController.swift */; };
 		F9A83A742269B3FC0099683E /* PLTokenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A83A732269B3FC0099683E /* PLTokenSetting.swift */; };
 		F9A83A77226D4AD70099683E /* LogDisplayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A83A75226D4AD70099683E /* LogDisplayingViewController.swift */; };
@@ -100,6 +101,7 @@
 		F931E9BE23B30C52006473C9 /* PLFDLoginAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLFDLoginAPIManager.swift; sourceTree = "<group>"; };
 		F94988CD227554E600B97C30 /* APIManagerCreateOverlookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerCreateOverlookViewController.swift; sourceTree = "<group>"; };
 		F94988CF227585E600B97C30 /* DataReformerCreatingOverlookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReformerCreatingOverlookViewController.swift; sourceTree = "<group>"; };
+		F9764978244AA84A00561B57 /* PLJavaServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLJavaServer.swift; sourceTree = "<group>"; };
 		F9A83A702269B0370099683E /* PinsLifeTokenSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinsLifeTokenSettingViewController.swift; sourceTree = "<group>"; };
 		F9A83A732269B3FC0099683E /* PLTokenSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLTokenSetting.swift; sourceTree = "<group>"; };
 		F9A83A75226D4AD70099683E /* LogDisplayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDisplayingViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		F931E94723B30C51006473C9 /* CustomServices */ = {
 			isa = PBXGroup;
 			children = (
+				F9764978244AA84A00561B57 /* PLJavaServer.swift */,
 				F931E94823B30C51006473C9 /* PinsLifeService.swift */,
 				F931E94923B30C51006473C9 /* YouZanService.swift */,
 				F931E94A23B30C51006473C9 /* PLPythonServer.swift */,
@@ -765,6 +768,7 @@
 				F9B28638224CAF85005D30C7 /* BDCache.swift in Sources */,
 				F9B28647224CAF85005D30C7 /* NSObject+BDNetworkingMethods.swift in Sources */,
 				F931EA2323B30C52006473C9 /* UserLoginByCodeAPIManager.swift in Sources */,
+				F9764979244AA84A00561B57 /* PLJavaServer.swift in Sources */,
 				F931E9C923B30C52006473C9 /* RemoteControlService.swift in Sources */,
 				F9B28640224CAF85005D30C7 /* BDNetworkCache.swift in Sources */,
 				F9A83A712269B0370099683E /* PinsLifeTokenSettingViewController.swift in Sources */,
@@ -946,8 +950,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NetworkPlayground/NetworkPlayground.entitlements;
 				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NetworkPlayground/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -955,6 +960,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pinsmedical.NetworkPlayground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -966,8 +972,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NetworkPlayground/NetworkPlayground.entitlements;
 				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NetworkPlayground/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -975,6 +982,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pinsmedical.NetworkPlayground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

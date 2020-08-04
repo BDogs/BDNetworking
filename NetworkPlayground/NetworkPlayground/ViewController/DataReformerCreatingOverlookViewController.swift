@@ -52,7 +52,7 @@ class DataReformerCreatingOverlookViewController: NSViewController {
     }
     
     func modificationContent() -> Void {
-        var content = BDNetworkFileClient.fetchFileContent(type: .dataReformer)
+        var content = BDNetworkFileClient.shared.fetchFileContent(type: .dataReformer)
         let fileName = fileNameTextField.stringValue
         content = content.replacingOccurrences(of: "___FILEBASENAMEASIDENTIFIER___", with: fileName)
         
@@ -112,7 +112,7 @@ class DataReformerCreatingOverlookViewController: NSViewController {
         guard !content.isEmpty else {
             return
         }
-        let isSuccess = BDNetworkFileClient.save(type: .dataReformer, content: content, fileName: fileName, floder: floder)
+        let isSuccess = BDNetworkFileClient.shared.save(type: .dataReformer, content: content, fileName: fileName, floder: floder)
         let title = isSuccess ? "保存成功-\(fileName)" : "保存失败-\(fileName)"
         let alert = NSAlert()
         alert.messageText = title
